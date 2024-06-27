@@ -44,12 +44,11 @@ impl SharpeRatio {
         self.trades_per_day = pnl_returns.trades_per_day;
 
         // Calculate Sharpe Ratio Per Trade
-        self.sharpe_ratio_per_trade = match pnl_returns.total.dispersion.std_dev == 0.0 {
-            true => 0.0,
-            false => {
-                (pnl_returns.total.mean - self.risk_free_return)
-                    / pnl_returns.total.dispersion.std_dev
-            }
+        self.sharpe_ratio_per_trade = if pnl_returns.total.dispersion.std_dev == 0.0 {
+            0.0
+        } else {
+            (pnl_returns.total.mean - self.risk_free_return)
+                / pnl_returns.total.dispersion.std_dev
         };
     }
 }
@@ -85,12 +84,11 @@ impl SortinoRatio {
         self.trades_per_day = pnl_returns.trades_per_day;
 
         // Calculate Sortino Ratio Per Trade
-        self.sortino_ratio_per_trade = match pnl_returns.losses.dispersion.std_dev == 0.0 {
-            true => 0.0,
-            false => {
-                (pnl_returns.total.mean - self.risk_free_return)
-                    / pnl_returns.losses.dispersion.std_dev
-            }
+        self.sortino_ratio_per_trade = if pnl_returns.losses.dispersion.std_dev == 0.0 {
+            0.0
+        } else {
+            (pnl_returns.total.mean - self.risk_free_return)
+                / pnl_returns.losses.dispersion.std_dev
         };
     }
 }
@@ -126,9 +124,10 @@ impl CalmarRatio {
         self.trades_per_day = pnl_returns.trades_per_day;
 
         // Calculate Calmar Ratio Per Trade
-        self.calmar_ratio_per_trade = match max_drawdown == 0.0 {
-            true => 0.0,
-            false => (pnl_returns.total.mean - self.risk_free_return) / max_drawdown.abs(),
+        self.calmar_ratio_per_trade = if max_drawdown == 0.0 {
+            0.0
+        } else {
+            (pnl_returns.total.mean - self.risk_free_return) / max_drawdown.abs()
         };
     }
 }

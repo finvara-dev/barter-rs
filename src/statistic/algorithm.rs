@@ -23,17 +23,19 @@ pub mod welford_online {
     /// Calculates the next unbiased 'Sample' Variance using Bessel's correction (count - 1), and the
     /// Welford Online recurrence relation M.
     pub fn calculate_sample_variance(recurrence_relation_m: f64, count: u64) -> f64 {
-        match count < 2 {
-            true => 0.0,
-            false => recurrence_relation_m / (count as f64 - 1.0),
+        if count < 2 {
+            0.0
+        } else {
+            recurrence_relation_m / (count as f64 - 1.0)
         }
     }
 
     /// Calculates the next biased 'Population' Variance using the Welford Online recurrence relation M.
     pub fn calculate_population_variance(recurrence_relation_m: f64, count: u64) -> f64 {
-        match count < 1 {
-            true => 0.0,
-            false => recurrence_relation_m / count as f64,
+        if count < 1 {
+            0.0
+        } else {
+            recurrence_relation_m / count as f64
         }
     }
 }
