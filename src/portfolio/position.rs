@@ -662,7 +662,7 @@ mod tests {
             network: 1.0,
         };
 
-        if let Err(_) = Position::enter(Uuid::new_v4(), &input_fill) {
+        if Position::enter(Uuid::new_v4(), &input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -684,7 +684,7 @@ mod tests {
             network: 1.0,
         };
 
-        if let Err(_) = Position::enter(Uuid::new_v4(), &input_fill) {
+        if Position::enter(Uuid::new_v4(), &input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -706,7 +706,7 @@ mod tests {
             network: 1.0,
         };
 
-        if let Err(_) = Position::enter(Uuid::new_v4(), &input_fill) {
+        if Position::enter(Uuid::new_v4(), &input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -728,7 +728,7 @@ mod tests {
             network: 1.0,
         };
 
-        if let Err(_) = Position::enter(Uuid::new_v4(), &input_fill) {
+        if Position::enter(Uuid::new_v4(), &input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -1285,7 +1285,7 @@ mod tests {
         };
 
         // Exit Position
-        if let Err(_) = position.exit(current_balance, &input_fill) {
+        if position.exit(current_balance, &input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -1331,7 +1331,7 @@ mod tests {
         };
 
         // Exit Position
-        if let Err(_) = position.exit(current_balance, &input_fill) {
+        if position.exit(current_balance, &input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -1390,7 +1390,7 @@ mod tests {
         input_fill.decision = Decision::CloseLong;
         input_fill.quantity = -1.0;
 
-        if let Err(_) = Position::parse_entry_side(&input_fill) {
+        if Position::parse_entry_side(&input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -1405,7 +1405,7 @@ mod tests {
         input_fill.decision = Decision::CloseShort;
         input_fill.quantity = 1.0;
 
-        if let Err(_) = Position::parse_entry_side(&input_fill) {
+        if Position::parse_entry_side(&input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -1421,7 +1421,7 @@ mod tests {
         input_fill.decision = Decision::Long;
         input_fill.quantity = -1.0;
 
-        if let Err(_) = Position::parse_entry_side(&input_fill) {
+        if Position::parse_entry_side(&input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
@@ -1437,7 +1437,7 @@ mod tests {
         input_fill.decision = Decision::Short;
         input_fill.quantity = 1.0;
 
-        if let Err(_) = Position::parse_entry_side(&input_fill) {
+        if Position::parse_entry_side(&input_fill).is_err() {
             Ok(())
         } else {
             Err(String::from(
