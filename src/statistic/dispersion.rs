@@ -55,21 +55,18 @@ impl Range {
 
     /// Iteratively updates the Range given the next value in the dataset.
     pub fn update(&mut self, new_value: f64) {
-        match self.activated {
-            true => {
-                if new_value > self.high {
-                    self.high = new_value;
-                }
-
-                if new_value < self.low {
-                    self.low = new_value;
-                }
-            }
-            false => {
-                self.activated = true;
+        if self.activated {
+            if new_value > self.high {
                 self.high = new_value;
+            }
+
+            if new_value < self.low {
                 self.low = new_value;
             }
+        } else {
+            self.activated = true;
+            self.high = new_value;
+            self.low = new_value;
         }
     }
 
