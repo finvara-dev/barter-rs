@@ -110,48 +110,48 @@ mod tests {
     #[test]
     fn should_return_decision_is_long() {
         let decision = Decision::Long;
-        assert_eq!(decision.is_long(), true)
+        assert!(decision.is_long())
     }
 
     #[test]
     fn should_return_decision_is_not_long() {
         let decision = Decision::Short;
-        assert_eq!(decision.is_long(), false)
+        assert!(!(decision.is_long()))
     }
 
     #[test]
     fn should_return_decision_is_short() {
         let decision = Decision::Short;
-        assert_eq!(decision.is_short(), true)
+        assert!(decision.is_short())
     }
 
     #[test]
     fn should_return_decision_is_not_short() {
         let decision = Decision::Long;
-        assert_eq!(decision.is_short(), false)
+        assert!(!(decision.is_short()))
     }
 
     #[test]
     fn should_return_decision_is_entry() {
         let decision = Decision::Long;
-        assert_eq!(decision.is_entry(), true)
+        assert!(decision.is_entry())
     }
 
     #[test]
     fn should_return_decision_is_not_entry() {
         let decision = Decision::CloseLong;
-        assert_eq!(decision.is_entry(), false)
+        assert!(!(decision.is_entry()))
     }
 
     #[test]
     fn should_return_decision_is_exit() {
         let decision = Decision::CloseShort;
-        assert_eq!(decision.is_exit(), true)
+        assert!(decision.is_exit())
     }
 
     #[test]
     fn should_return_decision_is_not_exit() {
         let decision = Decision::Long;
-        assert_eq!(decision.is_exit(), false)
+        assert!(!(decision.is_exit()))
     }
 }
